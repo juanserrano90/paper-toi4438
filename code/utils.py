@@ -105,3 +105,59 @@ def log_likelihood(x, y, diag, term, sigma, rho=None, period=None, Q0=None, dQ=N
     term3 = -0.5*len(x)*np.log(2*np.pi)
 
     return term1 + term2 + term3
+
+def tsm(teq, r_p, m_p, m_j, r_star,):
+    ''' Function to calculate the Transmission Spectroscopy Metric (TSM) for exoplanets 
+        as defined by Kempton et al. (2018) 
+        TSM = (Scale factor) x (r_p**3 Teq)/(m_p r_star**2) x 10^(-m_J/5)
+
+        where:
+        teq: Equilibrium temperature of the planet in Kelvin (calculated assuming zero albedo and full heat redistribution)
+        r_p: Radius of the planet in Earth radii
+        m_p: Mass of the planet in Earth masses
+        m_J: J-band magnitude of the host star, chosen as a filter that is close to the middle of the NIRISS bandpass
+    '''
+    if r_p < 1.5:
+        scale_factor = 0.190
+    elif 1.5 <= r_p < 2.75:
+        scale_factor = 1.26
+    elif 2.75 <= r_p < 4.0:
+        scale_factor = 1.28
+    elif 4.0 <= r_p < 10.0:
+        scale_factor = 1.15
+    else:
+        raise ValueError("Planet radius out of range for TSM calculation")
+    
+    tsm_value = scale_factor * (r_p**3 * teq) / (m_p * r_star**2) * 10**(-m_j / 5)
+
+    return tsm_value
+
+def esm(teq, r_p, t_star, r_star, m_k):
+    ''' Function to calculate the Emission Spectroscopy Metric (ESM) for exoplanets 
+        as defined by Kempton et al. (2018) 
+        ESM = 4.29 x 10^6 x (B_7.5(Tday)/B_7.5(Tstar)) x (r_p/r_star)^2 x 10^(-m_K/5)
+
+        where:
+        Tday: the planet's dayside temperature in Kelvin, we calculate it as 1.10 x Teq
+        B_7.5: Planck function evaluated at 7.5 microns for a given temperature
+        r_p: Radius of the planet in Earth radii
+        r_star: Radius of the host star in Solar radii
+        m_K: the apparent mag of the star in the K band
+    '''
+    # Planck function at 7.5 microns
+    def planck_7_5(temp):
+        h = 6.62607015e-34  # Planck constant in J*s
+        c = 2.99792458e8     # Speed of light in m/s
+        k = 1.380649e-23  # Boltzmann constant in J/K
+        wavelength = 7.5e-6  # Wavelength in meters
+
+        B = (2*h*c**2) / (wavelength**5) * 1 / (np.exp((h*c) / (wavelength*k*temp)) - 1)
+        return B
+    
+    T_day = 1.10 * teq
+    B_day = planck_7_5(T_day)
+    B_tstar = planck_7_5(t_star)
+
+    esm_value = 4.29e6 * (B_day / B_tstar) * (r_p / r_star)**2 * 10**(-m_k / 5)
+    
+    return esm_value
