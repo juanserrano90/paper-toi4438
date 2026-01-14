@@ -1,0 +1,2 @@
+Planet,M_obs,R_obs,TB_mean,TB_map,TB_std,Atm_Mass_Fraction_mean,Atm_Mass_Fraction_map,Atm_Mass_Fraction_std,Mcoremantle_mean,Mcoremantle_map,Mcoremantle_std,Zenv_mean,Zenv_map,Zenv_std,Age_mean,Age_map,Age_std
+Input_Surrogate_TOI-442_1765556678,28.4200,4.2500,722.8960,722.9422,0.6685,0.1978,0.1899,0.0574,27.3254,27.6840,0.3693,0.3696,0.3450,0.2128,2.9726,2.9202,0.7301

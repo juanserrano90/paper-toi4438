@@ -1,0 +1,2 @@
+Planet,M_obs,R_obs,TB_mean,TB_map,TB_std,LogMAtm_mean,LogMAtm_map,LogMAtm_std,Mcoremantle_mean,Mcoremantle_map,Mcoremantle_std,Zenv_mean,Zenv_map,Zenv_std,Age_mean,Age_map,Age_std
+Input_Surrogate_TOI-4438_1765383984,4.7700,2.3900,444.9094,445.5787,8.7636,-1.3106,-1.4148,0.1671,4.7802,4.7557,0.4212,0.3433,0.3517,0.1853,4.7974,4.4143,1.5899
