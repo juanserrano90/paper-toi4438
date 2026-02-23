@@ -27,19 +27,24 @@ def lag_matrix(y, x):  # y is the one with one missing value
     matrix = y[:, None] - x[None, :]
     return matrix
 
-def sho_term(sigma, rho, Q=1.0 / 3):
+# def sho_term(sigma, rho, Q=1.0 / 3):
+#     """Create a SHOTerm kernel with given parameters."""
+#     return celerite2.terms.SHOTerm(sigma=sigma, rho=rho, Q=Q)
+
+def sho_term(rho, tau, sigma):
     """Create a SHOTerm kernel with given parameters."""
-    return celerite2.terms.SHOTerm(sigma=sigma, rho=rho, Q=Q)
+    return celerite2.terms.SHOTerm(rho=rho, tau=tau, sigma=sigma)
 
 def rotation_term(sigma, period, Q0, dQ, f):
     """Create a Rotation term kernel with given parameters."""
     return celerite2.terms.RotationTerm(sigma=sigma, period=period, Q0=Q0, dQ=dQ, f=f)
 
-def logp(indice, x, y, diag, sigma, term=None, rho=None, period=None, Q0=None, dQ=None, f=None, verbose=False):
+def logp(indice, x, y, diag, sigma, term=None, tau=None, rho=None, period=None, Q0=None, dQ=None, f=None, verbose=False):
     """Compute the LOO log predictive probability for a single point."""
     # instanciate the kernel
     if term == 'sho':
-        kernel = sho_term(sigma, rho)
+        # kernel = sho_term(sigma, rho)
+        kernel = sho_term(rho, tau, sigma)
     elif term == 'rotation':
         kernel = rotation_term(sigma, period, Q0, dQ, f)
     else:
@@ -76,11 +81,11 @@ def logp(indice, x, y, diag, sigma, term=None, rho=None, period=None, Q0=None, d
         print('indice:', indice, 'cov:', cov, 'mean:', mean, "term1:", term1, "term2:", term2, "term3:", term3, "diag:", diag[indice])
     return term1 + term2 + term3
 
-def loo_cv(x, y, diag, sigma, term=None, rho=None, period=None, Q0=None, dQ=None, f=None, verbose=False):
+def loo_cv(x, y, diag, sigma, term=None, rho=None, tau=None, period=None, Q0=None, dQ=None, f=None, verbose=False):
     """Compute the full LOO-CV log predictive probability.
     term (str): 'sho' or 'rotation'
     """
-    logp_values = [logp(i, x, y, diag, sigma, term=term, rho=rho, period=period, Q0=Q0, dQ=dQ, f=f, verbose=verbose) for i in range(len(x))]
+    logp_values = [logp(i, x, y, diag, sigma, term=term, rho=rho, tau=tau, period=period, Q0=Q0, dQ=dQ, f=f, verbose=verbose) for i in range(len(x))]
 
     loo = np.sum(logp_values)
     loo_se = (len(x)*np.var(logp_values))**0.5
