@@ -1,0 +1,143 @@
+                                                      (J. Serrano Bell, 2026)
+================================================================================
+Revisiting TOI-4438 and TOI-442 planetary systems with new observations from
+SPIRou and TESS
+    J. Serrano Bell, G. Hébrard, E. Martioli, R. F. Díaz, L. de Almeida,
+    D. Lorenzo-Oliveira, A. Salmi, C. Dorn, M. Valatsou, A. Carmona,
+    M. Ould-Elhkim, L. Arnold, É. Artigau, I. Boisse, X. Bonfils, C. Cadieux,
+    Z. Chakir, N. J. Cook, X. Delfosse, J.-F. Donati, R. Doyon, N. Heidari,
+    J. M. Jenkins, F. Kiefer, S. Lafrance, A. L'Heureux, C. Moutou,
+    J. Morneau, X. Vandelac
+    =References ?
+================================================================================
+Keywords: planets and satellites: detection, techniques: photometric, techniques
+          : radial velocities, stars: planetary systems
+
+Objects:
+    -----------------------------------------
+       RA   (2000)   DE    Designation(s)
+    -----------------------------------------
+    18 01 16.10  +35 35 50.49    TOI-4438
+    04 16 45.60  -12 05 02.45    TOI-442
+    -----------------------------------------
+
+Abstract:
+  We present a comprehensive re-analysis of two star-planet systems: TOI-4438,
+  an M3.5V star hosting a mini-Neptune in a 7.4-day orbit, and TOI-442, an M1V
+  star with a 4-day period planet located within the hot Neptune desert. Both
+  systems were originally identified as transiting planet candidates by the
+  Transiting Exoplanet Survey Satellite (TESS) and subsequently validated
+  through the radial velocity (RV) method. Our work incorporates new TESS
+  transit data and high-resolution spectroscopy from the SPIRou near-infrared
+  (nIR) spectropolarimeter. We detect a persistent and relatively strong Zeeman
+  signature in TOI-442, while TOI-4438 exhibits weaker and intermittent magnetic
+  activity, and we infer the stellar rotation periods of both stars from the
+  variability of the longitudinal magnetic field. We jointly fit photometry and
+  RV models for each system. For TOI-4438 b we combine archival CARMENES data
+  with 81 SPIRou observations and five TESS sectors. This yields a refined
+  planetary mass of Mp = 4.11(+0.40)(-0.38)Mearth and a radius of Rp =
+  2.40(+0.09)(-0.10)Rearth, consistent with the previous estimate within 1.1
+  sigma while improving by 53% the precision on the mass and 22% on the radius.
+  For TOI-442 b, we add 29 SPIRou RV measurements to an extensive archival
+  dataset, significantly extending the temporal baseline. Incorporating this
+  with a new TESS sector, we tighten the constraints on the planetary mass to Mp
+  = 28.38(+0.77)(-0.73)Mearth and radius to Rp = 4.25(+0.10)(-0.08)Rearth, which
+  agrees to the previous values within 1.5 sigma and improves the precisions by
+  46% and 67% respectively. We find no clear signs of additional planets in the
+  currently available RV data, although we detect a single-transit event in the
+  TOI-4438 light curve. We compare various RV models and find that those
+  accounting for stellar variability-induced signals yield improved constraints
+  on the planetary parameters.
+
+Description:
+  Radial velocities and spectral activity indicators (differential line width,
+  line-depth temperature proxy) were extracted from SPIRou spectra using the
+  line-by-line (LBL) method. Longitudinal magnetic field measurements were
+  derived from the circularly polarized (Stokes V) spectra using Least-Squares
+  Deconvolution.
+
+File Summary:
+--------------------------------------------------------------------------------
+ FileName   Lrecl  Records  Explanations
+--------------------------------------------------------------------------------
+ReadMe         80        .  This file
+tablec1.dat    64       81  TOI-4438 spectroscopic time series
+tablec2.dat    64       29  TOI-442 spectroscopic time series
+tablec3.dat    25       80  TOI-4438 polarimetric time series
+tablec4.dat    25       39  TOI-442 polarimetric time series
+--------------------------------------------------------------------------------
+
+Byte-by-byte Description of file: tablec1.dat
+--------------------------------------------------------------------------------
+Bytes   Format Units  Label     Explanations
+--------------------------------------------------------------------------------
+ 1-16   F16.11 d      rjd       [59732.98/60577.74] Reduced Julian Date
+                                (JD-2400000)
+18-26   F9.1   m/s    rv        [-35137.12/-35106.67] Radial velocity
+28-32   F5.1   m/s    rv_err    [2.77/4.54] Radial velocity uncertainty
+34-43   F10.0  m2/s2  dlW       [919416.23/1470577.48] Differential line width
+                                activity indicator
+45-51   F7.0   m2/s2  dlW_err   [12997.9/21218.82] Differential line width
+                                uncertainty
+53-58   F6.1   K      dtemp     [160.57/220.84] Line-depth differential
+                                temperature activity indicator
+60-64   F5.1   K      dtemp_err [1.24/2.02] Differential temperature indicator
+                                uncertainty
+
+--------------------------------------------------------------------------------
+
+Byte-by-byte Description of file: tablec2.dat
+--------------------------------------------------------------------------------
+Bytes   Format Units  Label     Explanations
+--------------------------------------------------------------------------------
+ 1-16   F16.11 d      rjd       [58759.09/60627.85] Reduced Julian Date
+                                (JD-2400000)
+18-26   F9.1   m/s    rv        [-7408.72/-7364.76] Radial velocity
+28-32   F5.1   m/s    rv_err    [3.05/5.04] Radial velocity uncertainty
+34-43   F10.0  m2/s2  dlW       [-36822.81/326749.6] Differential line width
+                                activity indicator
+45-51   F7.0   m2/s2  dlW_err   [17721.89/25255.59] Differential line width
+                                uncertainty
+53-58   F6.1   K      dtemp     [104.21/121.78] Line-depth differential
+                                temperature activity indicator
+60-64   F5.1   K      dtemp_err [1.17/1.63] Differential temperature indicator
+                                uncertainty
+
+--------------------------------------------------------------------------------
+
+Byte-by-byte Description of file: tablec3.dat
+--------------------------------------------------------------------------------
+Bytes   Format Units  Label  Explanations
+--------------------------------------------------------------------------------
+ 1-12   F12.6  d      rjd    [59732.98/60577.74] Reduced Julian Date
+                             (JD-2400000)
+14-19   F6.1   G      bl     [-58.7/48.8] Longitudinal magnetic field
+21-25   F5.1   G      sbl    [10.19/24.1] Longitudinal magnetic field
+                             uncertainty
+
+--------------------------------------------------------------------------------
+
+Byte-by-byte Description of file: tablec4.dat
+--------------------------------------------------------------------------------
+Bytes   Format Units  Label  Explanations
+--------------------------------------------------------------------------------
+ 1-12   F12.6  d      rjd    [58759.09/60666.83] Reduced Julian Date
+                             (JD-2400000)
+14-19   F6.1   G      bl     [-30.4/23.5] Longitudinal magnetic field
+21-25   F5.1   G      sbl    [7.3/13.6] Longitudinal magnetic field uncertainty
+
+--------------------------------------------------------------------------------
+
+
+
+See also:
+
+
+Acknowledgements:
+  Juan Serrano Bell, jserrano(at)unsam.edu.ar
+
+References:
+
+License: CC-BY-4.0
+================================================================================
+     (prepared by author  / pyreadme )
